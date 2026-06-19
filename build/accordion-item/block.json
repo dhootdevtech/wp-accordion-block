@@ -1,0 +1,85 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "wp-accordion/accordion-item",
+  "version": "0.1.0",
+  "title": "Accordion Item",
+  "parent": [
+    "wp-accordion/accordion"
+  ],
+  "category": "widgets",
+  "icon": "smiley",
+  "description": "Accordion Item",
+  "example": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "titleTag": {
+      "type": "string",
+      "default": "h3"
+    },
+    "titleBgColor": {
+      "type": "string",
+      "default": "#f7f7f7"
+    },
+    "titleColor": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "fontSize": {
+      "type": "string",
+      "default": "18px"
+    },
+    "fontWeight": {
+      "type": "string",
+      "default": "600"
+    },
+    "padding": {
+      "type": "string",
+      "default": "15px"
+    },
+    "border": {
+      "type": "string",
+      "default": "1px solid #ddd"
+    },
+    "borderRadius": {
+      "type": "string",
+      "default": "4px"
+    },
+    "iconType": {
+      "type": "string",
+      "default": "plus"
+    },
+    "isOpen": {
+      "type": "boolean",
+      "default": true
+    },
+    "paddingContent": {
+      "type": "object",
+      "default": {
+        "top": "15px",
+        "right": "15px",
+        "bottom": "15px",
+        "left": "15px"
+      }
+    },
+    "contentBgcolor": {
+      "type": "string",
+      "default": "#fff"
+    },
+    "contentColor": {
+      "type": "string",
+      "default": "#000"
+    }
+  },
+  "supports": {
+    "html": false
+  },
+  "textdomain": "wp-accordion-block",
+  "editorScript": "file:./index.js",
+  "style": "file:./style-index.css",
+  "editorStyle": "file:./index.css",
+  "viewScript": "file:./view.js"
+}

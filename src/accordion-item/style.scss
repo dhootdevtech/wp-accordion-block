@@ -1,0 +1,19 @@
+.wp-block-wp-accordion-accordion-item .wp-accordion-content.view_content {
+	display: none;
+}
+
+.wp-block-wp-accordion-accordion-item .wp-accordion-item.active .wp-accordion-content {
+	display: block;
+}
+
+.icon-minus {
+	display: none;
+}
+
+.wp-accordion-item.active .icon-plus {
+	display: none;
+}
+
+.wp-accordion-item.active .icon-minus {
+	display: inline-flex;
+}
