@@ -67,12 +67,18 @@ return array(
 			'borderRadius' => array(
 				'type' => 'string',
 				'default' => '4px'
+			),
+			'iconType' => array(
+				'type' => 'string',
+				'default' => 'plus'
 			)
 		),
 		'supports' => array(
 			'html' => false
 		),
 		'textdomain' => 'wp-accordion-block',
-		'editorScript' => 'file:./index.js'
+		'editorScript' => 'file:./index.js',
+		'style' => 'file:./style-index.css',
+		'viewScript' => 'file:./view.js'
 	)
 );

@@ -1,7 +1,6 @@
-import {
-	InnerBlocks,
-	useBlockProps
-} from '@wordpress/block-editor';
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
+
+import './style.scss';
 
 export default function save() {
 	return (

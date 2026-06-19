@@ -1,0 +1,24 @@
+/*!******************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/accordion-item/style.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************/
+.wp-accordion-content {
+  display: none;
+}
+
+.wp-accordion-item.active .wp-accordion-content {
+  display: block;
+}
+
+.icon-minus {
+  display: none;
+}
+
+.wp-accordion-item.active .icon-plus {
+  display: none;
+}
+
+.wp-accordion-item.active .icon-minus {
+  display: inline-flex;
+}
+
+/*# sourceMappingURL=style-index.css.map*/

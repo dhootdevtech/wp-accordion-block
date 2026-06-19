@@ -20,7 +20,7 @@ import {PanelBody,SelectControl, TextControl, ColorPalette} from '@wordpress/com
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-
+import { PlusIcon, ChevronIcon, ArrowIcon, MinusIcon } from '../icons';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -31,11 +31,14 @@ import {PanelBody,SelectControl, TextControl, ColorPalette} from '@wordpress/com
  * @return {Element} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
+
 	const {
 		title,
 		titleTag,
 		titleBgColor,
 		titleColor,
+		isOpen,
+		iconType,
 		fontSize,
 		fontWeight,
 		padding,
@@ -43,19 +46,43 @@ export default function Edit({ attributes, setAttributes }) {
 		borderRadius
 	} = attributes;
 
+	const iconMap = {
+			plus: isOpen ? <PlusIcon /> : <MinusIcon />
+			// chevron: isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />,
+			// arrow: isOpen ? <ArrowUpIcon /> : <ArrowDownIcon />
+		};
+
 	const titleStyles = {
-		backgroundColor: titleBgColor,
-		color: titleColor,
 		fontSize: fontSize,
 		fontWeight: fontWeight,
+	};
+    
+	const titleWithtoogle = {
+		backgroundColor: titleBgColor,
+		color: titleColor,
 		padding: padding,
 		border: border,
 		borderRadius: borderRadius
-	};
+	}
+    
+
 	return (
 		<>
 		<InspectorControls>
 			<PanelBody title="Accordion Settings">
+				<SelectControl
+					label="Icon Type"
+					value={ iconType }
+					options={[
+						{ label: 'Plus', value: 'plus' },
+						{ label: 'Minus', value: 'minus' },
+						{ label: 'Chevron', value: 'chevron' },
+						{ label: 'Arrow', value: 'arrow' }
+					]}
+					onChange={(value) =>
+						setAttributes({ iconType: value })
+					}
+				/>
 				<SelectControl
 					label="Title Tag"
 					value={ titleTag }
@@ -139,28 +166,38 @@ export default function Edit({ attributes, setAttributes }) {
 		<div { ...useBlockProps() }>
 			<div className="wp-accordion-item">
 			
-			<RichText
-				tagName={ titleTag }
-				className="wp-accordion-title"
-				style={ titleStyles }
-				placeholder="Accordion Title"
-				value={ title }
-				onChange={ ( value ) =>
-					setAttributes( { title: value } )
-				}
-			/>
-				<div className="wp-accordion-content">
-					<InnerBlocks
-						template={[
-							[
-								'core/paragraph',
-								{
-									placeholder: 'Accordion Content'
-								}
-							]
-						]}
+			<div className="wp-accordion-header" style={titleWithtoogle}>
+
+			    <RichText
+						tagName={ titleTag }
+						className="wp-accordion-title"
+						value={ title }
+						style={ titleStyles }
+						onChange={(value) =>
+							setAttributes({ title: value })
+						}
 					/>
+
+					<span className="wp-accordion-icon" onClick={() => setAttributes({ isOpen: !isOpen}) }>
+						{ iconMap[iconType] }
+					</span>
+
 				</div>
+				
+				{ isOpen && (
+					<div className="wp-accordion-content">
+						<InnerBlocks
+							template={[
+								[
+									'core/paragraph',
+									{
+										placeholder: 'Accordion Content'
+									}
+								]
+							]}
+						/>
+					</div>
+				)}
 			</div>
 		</div>
 		</>
