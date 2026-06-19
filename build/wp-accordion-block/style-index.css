@@ -8,9 +8,19 @@
  * Replace them with your own styles or remove the file completely.
  */
 .wp-block-create-block-wp-accordion-block {
-  background-color: #21759b;
-  color: #fff;
+  background-color: #ffffff;
+  color: #0b0b0b;
   padding: 2px;
+}
+.wp-accordion-item {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+.wp-accordion-title {
+  display: block;
+  box-sizing: border-box;
+  margin: 0;
 }
 
 /*# sourceMappingURL=style-index.css.map*/

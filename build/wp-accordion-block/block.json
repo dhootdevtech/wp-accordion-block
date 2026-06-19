@@ -1,13 +1,54 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "create-block/wp-accordion-block",
+  "name": "wp-accordion/accordion-item",
   "version": "0.1.0",
-  "title": "Wp Accordion Block",
+  "title": "Accordion Item",
   "category": "widgets",
   "icon": "smiley",
-  "description": "Example block scaffolded with Create Block tool.",
+  "description": "Accordion Item",
+  "parent": [
+    "wp-accordion/accordion"
+  ],
   "example": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "titleTag": {
+      "type": "string",
+      "default": "h3"
+    },
+    "titleBgColor": {
+      "type": "string",
+      "default": "#f7f7f7"
+    },
+    "titleColor": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "fontSize": {
+      "type": "string",
+      "default": "18px"
+    },
+    "fontWeight": {
+      "type": "string",
+      "default": "600"
+    },
+    "padding": {
+      "type": "string",
+      "default": "15px"
+    },
+    "border": {
+      "type": "string",
+      "default": "1px solid #ddd"
+    },
+    "borderRadius": {
+      "type": "string",
+      "default": "4px"
+    }
+  },
   "supports": {
     "html": false
   },

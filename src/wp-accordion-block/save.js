@@ -4,7 +4,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { RichText, InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
 /**
  * The save function defines the way in which the different attributes should
@@ -15,10 +15,46 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {Element} Element to render.
  */
-export default function save() {
+export default function save( { attributes } ) {
+	const {
+	title,
+	titleTag,
+	titleBgColor,
+	titleColor,
+	fontSize,
+	fontWeight,
+	padding,
+	border,
+	borderRadius
+} = attributes;
+
+	const HeadingTag = titleTag;
+	const titleStyles = {
+	backgroundColor: titleBgColor,
+	color: titleColor,
+	fontSize: fontSize,
+	fontWeight: fontWeight,
+	padding: padding,
+	border: border,
+	borderRadius: borderRadius
+};
+
 	return (
-		<p { ...useBlockProps.save() }>
-			{ 'Wp Accordion Block – hello from the saved content!' }
-		</p>
+		<div { ...useBlockProps.save() }>
+			<div className="wp-accordion-item">
+
+				<RichText.Content
+					tagName={ HeadingTag }
+					className="wp-accordion-title"
+					value={ title }
+					style={ titleStyles }
+				/>
+
+				<div className="wp-accordion-content">
+					<InnerBlocks.Content />
+				</div>
+
+			</div>
+		</div>
 	);
 }
