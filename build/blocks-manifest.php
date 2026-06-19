@@ -1,18 +1,33 @@
 <?php
 // This file is generated. Do not modify it manually.
 return array(
-	'wp-accordion-block' => array(
+	'accordion' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'wp-accordion/accordion',
+		'title' => 'Accordion',
+		'category' => 'widgets',
+		'icon' => 'menu',
+		'description' => 'Accordion Container',
+		'supports' => array(
+			'html' => false
+		),
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'style' => 'file:./style-index.css'
+	),
+	'accordion-item' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
 		'name' => 'wp-accordion/accordion-item',
 		'version' => '0.1.0',
 		'title' => 'Accordion Item',
-		'category' => 'widgets',
-		'icon' => 'smiley',
-		'description' => 'Accordion Item',
 		'parent' => array(
 			'wp-accordion/accordion'
 		),
+		'category' => 'widgets',
+		'icon' => 'smiley',
+		'description' => 'Accordion Item',
 		'example' => array(
 			
 		),
@@ -58,9 +73,6 @@ return array(
 			'html' => false
 		),
 		'textdomain' => 'wp-accordion-block',
-		'editorScript' => 'file:./index.js',
-		'editorStyle' => 'file:./index.css',
-		'style' => 'file:./style-index.css',
-		'viewScript' => 'file:./view.js'
+		'editorScript' => 'file:./index.js'
 	)
 );
