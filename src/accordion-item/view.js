@@ -1,3 +1,4 @@
+/*
 document.addEventListener('DOMContentLoaded', () => {
 
 	const accordions =
@@ -25,3 +26,5 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 
 });
+
+*/

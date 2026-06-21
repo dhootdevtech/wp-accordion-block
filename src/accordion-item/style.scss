@@ -1,13 +1,21 @@
 .wp-block-wp-accordion-accordion-item .wp-accordion-content.view_content {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.3s ease;
+}
+
+
+
+.icon-minus,.icon-chevron-up {
 	display: none;
 }
 
-.wp-block-wp-accordion-accordion-item .wp-accordion-item.active .wp-accordion-content {
-	display: block;
+.wp-accordion-item.active .icon-chevron-down {
+	display: none;
 }
 
-.icon-minus {
-	display: none;
+.wp-accordion-item.active .icon-chevron-up {
+	display: inline-flex;
 }
 
 .wp-accordion-item.active .icon-plus {

@@ -6,10 +6,21 @@
   "category": "widgets",
   "icon": "menu",
   "description": "Accordion Container",
+  "attributes": {
+    "openFirst": {
+      "type": "boolean",
+      "default": false
+    },
+    "singleOpen": {
+      "type": "boolean",
+      "default": false
+    }
+  },
   "supports": {
     "html": false
   },
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
-  "style": "file:./style-index.css"
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
 }

@@ -9,12 +9,23 @@ return array(
 		'category' => 'widgets',
 		'icon' => 'menu',
 		'description' => 'Accordion Container',
+		'attributes' => array(
+			'openFirst' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'singleOpen' => array(
+				'type' => 'boolean',
+				'default' => false
+			)
+		),
 		'supports' => array(
 			'html' => false
 		),
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
-		'style' => 'file:./style-index.css'
+		'style' => 'file:./style-index.css',
+		'viewScript' => 'file:./view.js'
 	),
 	'accordion-item' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',

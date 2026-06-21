@@ -1,1 +1,0 @@
-document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll(".wp-accordion-item").forEach(e=>{const o=e.querySelector(".wp-accordion-header"),c=e.querySelector(".wp-accordion-icon");o.addEventListener("click",()=>{e.classList.toggle("active");const o=c.dataset.icon;console.log(o)})})});

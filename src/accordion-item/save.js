@@ -5,7 +5,7 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import { RichText, InnerBlocks, useBlockProps } from '@wordpress/block-editor';
-import { PlusIcon, ChevronIcon, ArrowIcon, MinusIcon } from '../icons';
+import { PlusIcon, ChevronUpIcon, ChevronDownIcon, MinusIcon } from '../icons';
 /**
  * The save function defines the way in which the different attributes should
  * be combined into the final markup, which is then serialized by the block
@@ -36,8 +36,8 @@ export default function save( { attributes } ) {
 	const iconMap = {
 		plus: <PlusIcon />,
 		minus: <MinusIcon />,
-		chevron: <ChevronIcon />,
-		arrow: <ArrowIcon />
+		ChevronUpIcon: <ChevronUpIcon />,
+		ChevronDownIcon: <ChevronDownIcon />
 	};
 
 	const HeadingTag = titleTag;
@@ -77,21 +77,34 @@ export default function save( { attributes } ) {
 						style={ titleStyles }
 					/>
 
-					
+					{iconType === 'none' && (
+						<>
+						</>
+					)}
 
-					<span
-						className="wp-accordion-icon"
-						data-icon={iconType}
-					>
-						<span className="icon-plus">
-							<PlusIcon />
-						</span>
+					{iconType === 'plus' && (
+						<>
+							<span className="icon-plus">
+								<PlusIcon />
+							</span>
 
-						<span className="icon-minus">
-							<MinusIcon />
-						</span>
+							<span className="icon-minus">
+								<MinusIcon />
+							</span>
+						</>
+					)}
 
-					</span>
+					{iconType === 'chevron' && (
+						<>
+							<span className="icon-chevron-down">
+								<ChevronDownIcon />
+							</span>
+
+							<span className="icon-chevron-up">
+								<ChevronUpIcon />
+							</span>
+						</>
+					)}
 
 
 					
@@ -99,8 +112,10 @@ export default function save( { attributes } ) {
 				</div>
                 
 				
-				<div className="wp-accordion-content view_content" style={ contentStyle }>
+				<div className="wp-accordion-content view_content">
+					<div class="wp-accordion-content-inner" style={contentStyle}>
 					<InnerBlocks.Content />
+					</div>
 				</div>
 
 			</div>

@@ -23,3 +23,94 @@
 /* eslint-disable no-console */
 console.log( 'Hello World! (from create-block-wp-accordion-block block)' );
 /* eslint-enable no-console */
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+	document
+		.querySelectorAll('.wp-accordion')
+		.forEach((accordionWrapper) => {
+
+			const singleOpen =
+				accordionWrapper.dataset.singleOpen === 'true';
+
+			const openFirst =
+				accordionWrapper.dataset.openFirst === 'true';
+
+			const items =
+				accordionWrapper.querySelectorAll(
+					'.wp-accordion-item'
+				);
+
+			// Open first item if enabled
+			if (openFirst && items.length) {
+
+				items[0].classList.add('active');
+
+				const firstContent =
+					items[0].querySelector(
+						'.wp-accordion-content'
+					);
+
+				firstContent.style.maxHeight =
+					firstContent.scrollHeight + 'px';
+			}
+
+			items.forEach((item) => {
+
+				const header =
+					item.querySelector(
+						'.wp-accordion-header'
+					);
+
+				const content =
+					item.querySelector(
+						'.wp-accordion-content'
+					);
+
+				header.addEventListener('click', () => {
+
+					if (singleOpen) {
+
+						items.forEach((otherItem) => {
+
+							if (otherItem !== item) {
+
+								otherItem.classList.remove(
+									'active'
+								);
+
+								const otherContent =
+									otherItem.querySelector(
+										'.wp-accordion-content'
+									);
+
+								otherContent.style.maxHeight = null;
+							}
+
+						});
+
+					}
+
+					item.classList.toggle('active');
+
+					if (
+						item.classList.contains('active')
+					) {
+
+						content.style.maxHeight =
+							content.scrollHeight + 'px';
+
+					} else {
+
+						content.style.maxHeight = null;
+
+					}
+
+				});
+
+			});
+
+		});
+
+});

@@ -20,7 +20,7 @@ import {PanelBody,SelectControl, TextControl, ColorPalette, __experimentalBoxCon
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import { PlusIcon, ChevronIcon, ArrowIcon, MinusIcon } from '../icons';
+import { PlusIcon, ChevronUpIcon, ChevronDownIcon, MinusIcon } from '../icons';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -50,9 +50,8 @@ export default function Edit({ attributes, setAttributes }) {
 	} = attributes;
 
 	const iconMap = {
-			plus: isOpen ? <MinusIcon /> : <PlusIcon />
-			// chevron: isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />,
-			// arrow: isOpen ? <ArrowUpIcon /> : <ArrowDownIcon />
+			plus: isOpen ? <MinusIcon /> : <PlusIcon />,
+			chevron: isOpen ?  <ChevronDownIcon />: <ChevronUpIcon />	
 		};
 
 	const titleStyles = {
@@ -86,10 +85,9 @@ export default function Edit({ attributes, setAttributes }) {
 					label="Icon Type"
 					value={ iconType }
 					options={[
-						{ label: 'Plus', value: 'plus' },
-						{ label: 'Minus', value: 'minus' },
-						{ label: 'Chevron', value: 'chevron' },
-						{ label: 'Arrow', value: 'arrow' }
+						{ label: 'Plus/Minus', value: 'plus' },
+						{ label: 'Chevron Up/Down ', value: 'chevron' },
+						{ label: 'None', value: 'none' }
 					]}
 					onChange={(value) =>
 						setAttributes({ iconType: value })
@@ -226,7 +224,8 @@ export default function Edit({ attributes, setAttributes }) {
 				</div>
 				
 				{ isOpen && (
-					<div className="wp-accordion-content" style={contentStyle}>
+					<div className="wp-accordion-content">
+						<div class="wp-accordion-content-inner" style={contentStyle}>
 						<InnerBlocks
 							template={[
 								[
@@ -237,6 +236,7 @@ export default function Edit({ attributes, setAttributes }) {
 								]
 							]}
 						/>
+						</div>
 					</div>
 				)}
 			</div>
