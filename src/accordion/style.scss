@@ -11,22 +11,15 @@
 	padding: 2px;
 }
 
-.wp-accordion-item {
-	border: 1px solid #ddd;
-	border-radius: 4px;
-	margin-bottom: 15px;
-}
-
 .wp-accordion-title {
 	display: block;
 	box-sizing: border-box;
+	flex: 1;
 	margin: 0;
+	font-size: var(--accordion-font-size);
+	font-weight: var(--accordion-font-weight);
 }
 
-
-.wp-accordion-title {
-	margin: 0;
-}
 
 .wp-accordion-icon {
 	display: flex;
@@ -39,11 +32,6 @@
 	align-items: center;
 	justify-content: space-between;
 	gap: 10px;
-}
-
-.wp-accordion-title {
-	flex: 1;
-	margin: 0;
 }
 
 .wp-accordion-icon {

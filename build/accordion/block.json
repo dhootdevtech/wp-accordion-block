@@ -14,10 +14,56 @@
     "singleOpen": {
       "type": "boolean",
       "default": false
+    },
+    "iconType": {
+      "type": "string",
+      "default": "plus"
+    },
+    "titleBgColor": {
+      "type": "string",
+      "default": "#f7f7f7"
+    },
+    "titleColor": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "fontSize": {
+      "type": "string",
+      "default": "18px"
+    },
+    "fontWeight": {
+      "type": "string",
+      "default": "600"
+    },
+    "border": {
+      "type": "string",
+      "default": "1px solid #ddd"
+    },
+    "borderRadius": {
+      "type": "string",
+      "default": "4px"
+    },
+    "paddingLeftRightTitle": {
+      "type": "object",
+      "default": {
+        "right": "10px",
+        "left": "10px"
+      }
+    },
+    "paddingTopBottomTitle": {
+      "type": "object",
+      "default": {
+        "right": "10px",
+        "left": "10px"
+      }
     }
   },
   "supports": {
-    "html": false
+    "html": false,
+    "spacing": {
+      "padding": true,
+      "margin": true
+    }
   },
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",

@@ -20,38 +20,6 @@
       "type": "string",
       "default": "h3"
     },
-    "titleBgColor": {
-      "type": "string",
-      "default": "#f7f7f7"
-    },
-    "titleColor": {
-      "type": "string",
-      "default": "#000000"
-    },
-    "fontSize": {
-      "type": "string",
-      "default": "18px"
-    },
-    "fontWeight": {
-      "type": "string",
-      "default": "600"
-    },
-    "padding": {
-      "type": "string",
-      "default": "15px"
-    },
-    "border": {
-      "type": "string",
-      "default": "1px solid #ddd"
-    },
-    "borderRadius": {
-      "type": "string",
-      "default": "4px"
-    },
-    "iconType": {
-      "type": "string",
-      "default": "plus"
-    },
     "isOpen": {
       "type": "boolean",
       "default": true
@@ -72,6 +40,10 @@
     "contentColor": {
       "type": "string",
       "default": "#000"
+    },
+    "iconType": {
+      "type": "string",
+      "default": "plus"
     }
   },
   "supports": {

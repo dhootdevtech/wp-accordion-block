@@ -19,18 +19,11 @@ export default function save( { attributes } ) {
 	const {
 		title,
 		titleTag,
-		titleBgColor,
-		titleColor,
 		isOpen,
-		iconType,
-		fontSize,
-		fontWeight,
-		padding,
-		border,
-		borderRadius,
 		paddingContent,
 		contentBgcolor,
-		contentColor
+		contentColor,
+		iconType
 	} = attributes;
 
 	const iconMap = {
@@ -41,18 +34,6 @@ export default function save( { attributes } ) {
 	};
 
 	const HeadingTag = titleTag;
-	const titleStyles = {
-		fontSize: fontSize,
-		fontWeight: fontWeight,
-	};
-    
-	const titleWithtoogle = {
-		backgroundColor: titleBgColor,
-		color: titleColor,
-		padding: padding,
-		border: border,
-		borderRadius: borderRadius
-	}
 
 	const contentStyle = {
 		paddingTop: paddingContent?.top,
@@ -68,13 +49,12 @@ export default function save( { attributes } ) {
 		<div { ...useBlockProps.save() }>
 			<div className="wp-accordion-item">
 
-				<div className="wp-accordion-header" style = {titleWithtoogle}>
+				<div className="wp-accordion-header">
 
 					<RichText.Content
 						tagName={ HeadingTag }
 						className="wp-accordion-title"
 						value={ title }
-						style={ titleStyles }
 					/>
 
 					{iconType === 'none' && (
@@ -113,7 +93,7 @@ export default function save( { attributes } ) {
                 
 				
 				<div className="wp-accordion-content view_content">
-					<div class="wp-accordion-content-inner" style={contentStyle}>
+					<div className="wp-accordion-content-inner" style={contentStyle}>
 					<InnerBlocks.Content />
 					</div>
 				</div>

@@ -13,7 +13,7 @@ import { __ } from '@wordpress/i18n';
  */
 import { RichText, InnerBlocks, useBlockProps, InspectorControls } from '@wordpress/block-editor';
 import {PanelBody,SelectControl, TextControl, ColorPalette, __experimentalBoxControl as BoxControl} from '@wordpress/components';
-
+import { useSelect } from '@wordpress/data';
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
@@ -30,34 +30,70 @@ import { PlusIcon, ChevronUpIcon, ChevronDownIcon, MinusIcon } from '../icons';
  *
  * @return {Element} Element to render.
  */
-export default function Edit({ attributes, setAttributes }) {
+export default function Edit({ attributes, setAttributes, clientId }) {
 
 	const {
 		title,
 		titleTag,
+		isOpen,
+		paddingLeftRightTitle,
+		paddingTopBottomTitle,
+		paddingContent,
+		contentBgcolor,
+		contentColor,
 		titleBgColor,
 		titleColor,
-		isOpen,
-		iconType,
 		fontSize,
 		fontWeight,
 		padding,
 		border,
-		borderRadius,
-		paddingContent,
-		contentBgcolor,
-		contentColor
+		borderRadius
 	} = attributes;
+
+	const parentAttributes = useSelect(
+			(select) => {
+
+				const parentId =
+					select('core/block-editor')
+						.getBlockParents(clientId)[0];
+
+				const parentBlock =
+					select('core/block-editor')
+						.getBlock(parentId);
+
+				return parentBlock?.attributes || {};
+
+			},
+			[clientId]
+	);
+
+	const iconType =
+	parentAttributes.iconType || 'plus';
+
+	const titleStyles = {
+			color: parentAttributes.titleColor,
+			fontSize: parentAttributes.fontSize,
+			fontWeight: parentAttributes.fontWeight
+		};
+
+	const titleWithToggle = {
+			backgroundColor:
+				parentAttributes.titleBgColor,
+			paddingTop: parentAttributes.paddingTopBottomTitle?.top,
+			paddingRight: parentAttributes.paddingLeftRightTitle?.right,
+			paddingBottom: parentAttributes.paddingTopBottomTitle?.bottom,
+			paddingLeft: parentAttributes.paddingLeftRightTitle?.left,
+			border:
+				parentAttributes.border,
+			borderRadius:
+				parentAttributes.borderRadius
+		};
 
 	const iconMap = {
 			plus: isOpen ? <MinusIcon /> : <PlusIcon />,
-			chevron: isOpen ?  <ChevronDownIcon />: <ChevronUpIcon />	
+			chevron: isOpen ? <ChevronUpIcon />: <ChevronDownIcon />
 		};
 
-	const titleStyles = {
-		fontSize: fontSize,
-		fontWeight: fontWeight,
-	};
 
 	const contentStyle = {
 		paddingTop: paddingContent?.top,
@@ -68,64 +104,10 @@ export default function Edit({ attributes, setAttributes }) {
 		color: contentColor
 	}
     
-	const titleWithtoogle = {
-		backgroundColor: titleBgColor,
-		color: titleColor,
-		padding: padding,
-		border: border,
-		borderRadius: borderRadius
-	}
-    
-
+console.log(attributes.paddingContent);
 	return (
 		<>
 		<InspectorControls>
-			<PanelBody title="Accordion Settings">
-				<SelectControl
-					label="Icon Type"
-					value={ iconType }
-					options={[
-						{ label: 'Plus/Minus', value: 'plus' },
-						{ label: 'Chevron Up/Down ', value: 'chevron' },
-						{ label: 'None', value: 'none' }
-					]}
-					onChange={(value) =>
-						setAttributes({ iconType: value })
-					}
-				/>
-				
-				<p>Background Color</p>
-				<ColorPalette
-					value={ attributes.titleBgColor }
-					onChange={ ( color ) =>
-						setAttributes( { titleBgColor: color } )
-					}
-				/>
-                
-				<TextControl
-					label="Padding"
-					value={ attributes.padding }
-					onChange={ ( value ) =>
-						setAttributes( { padding: value } )
-					}
-				/>
-
-				<TextControl
-					label="Border"
-					value={ attributes.border }
-					onChange={ ( value ) =>
-						setAttributes( { border: value } )
-					}
-				/>
-
-				<TextControl
-					label="Border Radius"
-					value={ attributes.borderRadius }
-					onChange={ ( value ) =>
-						setAttributes( { borderRadius: value } )
-					}
-				/>
-			</PanelBody>
 			<PanelBody title="Title Settings">
                   <SelectControl
 					label="Title Tag"
@@ -144,37 +126,6 @@ export default function Edit({ attributes, setAttributes }) {
 						} )
 					}
 				/>
-
-
-				  <p>Text Color</p>
-					<ColorPalette
-						value={ attributes.titleColor }
-						onChange={ ( color ) =>
-							setAttributes( { titleColor: color } )
-						}
-					/>
-
-					<TextControl
-						label="Font Size"
-						value={ attributes.fontSize }
-						onChange={ ( value ) =>
-							setAttributes( { fontSize: value } )
-						}
-					/>
-
-					<SelectControl
-						label="Font Weight"
-						value={ attributes.fontWeight }
-						options={ [
-							{ label: 'Normal', value: '400' },
-							{ label: 'Medium', value: '500' },
-							{ label: 'Semi Bold', value: '600' },
-							{ label: 'Bold', value: '700' }
-						] }
-						onChange={ ( value ) =>
-							setAttributes( { fontWeight: value } )
-						}
-					/>
 			</PanelBody>
 			<PanelBody title="Content Settings">
                 <ColorPalette
@@ -194,18 +145,25 @@ export default function Edit({ attributes, setAttributes }) {
 				<BoxControl
 					label="Padding"
 					values={ attributes.paddingContent }
-					onChange={ ( value ) =>
-						setAttributes( { paddingContent: value } )
-					}
+					onChange={(value) => {
+					setAttributes({
+						paddingContent: {
+							top: value.top ? `${parseInt(value.top)}px` : '',
+							right: value.right ? `${parseInt(value.right)}px` : '',
+							bottom: value.bottom ? `${parseInt(value.bottom)}px` : '',
+							left: value.left ? `${parseInt(value.left)}px` : '',
+						},
+					});
+				}}
 				/>
-
+              
 			</PanelBody>
 		</InspectorControls>
 		
 		<div { ...useBlockProps() }>
 			<div className="wp-accordion-item">
 			
-			<div className="wp-accordion-header" style={titleWithtoogle}>
+			<div className="wp-accordion-header" style={titleWithToggle}>
 
 			    <RichText
 						tagName={ titleTag }
@@ -225,7 +183,7 @@ export default function Edit({ attributes, setAttributes }) {
 				
 				{ isOpen && (
 					<div className="wp-accordion-content">
-						<div class="wp-accordion-content-inner" style={contentStyle}>
+						<div className="wp-accordion-content-inner" style={contentStyle}>
 						<InnerBlocks
 							template={[
 								[

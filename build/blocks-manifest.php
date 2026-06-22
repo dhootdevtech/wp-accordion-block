@@ -17,10 +17,56 @@ return array(
 			'singleOpen' => array(
 				'type' => 'boolean',
 				'default' => false
+			),
+			'iconType' => array(
+				'type' => 'string',
+				'default' => 'plus'
+			),
+			'titleBgColor' => array(
+				'type' => 'string',
+				'default' => '#f7f7f7'
+			),
+			'titleColor' => array(
+				'type' => 'string',
+				'default' => '#000000'
+			),
+			'fontSize' => array(
+				'type' => 'string',
+				'default' => '18px'
+			),
+			'fontWeight' => array(
+				'type' => 'string',
+				'default' => '600'
+			),
+			'border' => array(
+				'type' => 'string',
+				'default' => '1px solid #ddd'
+			),
+			'borderRadius' => array(
+				'type' => 'string',
+				'default' => '4px'
+			),
+			'paddingLeftRightTitle' => array(
+				'type' => 'object',
+				'default' => array(
+					'right' => '10px',
+					'left' => '10px'
+				)
+			),
+			'paddingTopBottomTitle' => array(
+				'type' => 'object',
+				'default' => array(
+					'right' => '10px',
+					'left' => '10px'
+				)
 			)
 		),
 		'supports' => array(
-			'html' => false
+			'html' => false,
+			'spacing' => array(
+				'padding' => true,
+				'margin' => true
+			)
 		),
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
@@ -51,38 +97,6 @@ return array(
 				'type' => 'string',
 				'default' => 'h3'
 			),
-			'titleBgColor' => array(
-				'type' => 'string',
-				'default' => '#f7f7f7'
-			),
-			'titleColor' => array(
-				'type' => 'string',
-				'default' => '#000000'
-			),
-			'fontSize' => array(
-				'type' => 'string',
-				'default' => '18px'
-			),
-			'fontWeight' => array(
-				'type' => 'string',
-				'default' => '600'
-			),
-			'padding' => array(
-				'type' => 'string',
-				'default' => '15px'
-			),
-			'border' => array(
-				'type' => 'string',
-				'default' => '1px solid #ddd'
-			),
-			'borderRadius' => array(
-				'type' => 'string',
-				'default' => '4px'
-			),
-			'iconType' => array(
-				'type' => 'string',
-				'default' => 'plus'
-			),
 			'isOpen' => array(
 				'type' => 'boolean',
 				'default' => true
@@ -103,6 +117,10 @@ return array(
 			'contentColor' => array(
 				'type' => 'string',
 				'default' => '#000'
+			),
+			'iconType' => array(
+				'type' => 'string',
+				'default' => 'plus'
 			)
 		),
 		'supports' => array(
