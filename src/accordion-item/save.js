@@ -20,9 +20,14 @@ export default function save( { attributes } ) {
 		title,
 		titleTag,
 		isOpen,
-		paddingContent,
 		contentBgcolor,
 		contentColor,
+		marginTopBottom,
+		marginLeftRight,
+		paddingLeftRightTitle, 
+		paddingTopBottomTitle,
+		paddingTopBottomContent,
+		paddingLeftRightContent,
 		iconType
 	} = attributes;
 
@@ -36,20 +41,42 @@ export default function save( { attributes } ) {
 	const HeadingTag = titleTag;
 
 	const contentStyle = {
-		paddingTop: paddingContent?.top,
-		paddingRight: paddingContent?.right,
-		paddingBottom: paddingContent?.bottom,
-		paddingLeft: paddingContent?.left,
+		paddingTop: paddingTopBottomContent?.top,
+		paddingRight: paddingLeftRightContent?.right,
+		paddingBottom: paddingTopBottomContent?.bottom,
+		paddingLeft: paddingLeftRightContent?.left,
 		backgroundColor: contentBgcolor,
 		color: contentColor
 	}
     
+	const marginStyle = {
+			marginTop:marginTopBottom?.top,
+			marginBottom:marginTopBottom?.bottom,
+			marginLeft:marginLeftRight?.left,
+			marginRight:marginLeftRight?.right
+	};
+
+	const titleWithToggle = {
+		paddingTop:
+			paddingTopBottomTitle?.top,
+
+		paddingBottom:
+			paddingTopBottomTitle?.bottom,
+
+		paddingLeft:
+			paddingLeftRightTitle?.left,
+
+		paddingRight:
+			paddingLeftRightTitle?.right,
+};
 
 	return (
-		<div { ...useBlockProps.save() }>
+		<div { ...useBlockProps.save({
+			style:marginStyle
+		}) } >
 			<div className="wp-accordion-item">
 
-				<div className="wp-accordion-header">
+				<div className="wp-accordion-header" style={titleWithToggle}>
 
 					<RichText.Content
 						tagName={ HeadingTag }

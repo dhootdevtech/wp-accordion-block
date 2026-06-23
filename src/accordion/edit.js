@@ -15,7 +15,16 @@ import {
 } from '@wordpress/components';
 
 export default function Edit({ attributes, setAttributes }) {
-	const { openFirst, singleOpen, iconType, titleBgColor, titleColor, fontSize,fontWeight, paddingLeftRightTitle, paddingTopBottomTitle, border, borderRadius } = attributes;
+	const { openFirst, 
+		singleOpen, 
+		iconType, 
+		titleBgColor, 
+		titleColor, 
+		fontSize,
+		fontWeight, 
+		enableFaqSchema,
+		border, 
+		borderRadius } = attributes;
 	return (
 		<>
 		<InspectorControls>
@@ -50,7 +59,15 @@ export default function Edit({ attributes, setAttributes }) {
 				}
 			/>
 
-
+         <ToggleControl
+			label="Enable FAQ Schema"
+			checked={ enableFaqSchema }
+			onChange={ ( value ) =>
+				setAttributes({
+					enableFaqSchema: value
+				})
+			}
+		/>
 
 		</PanelBody>
 		<PanelBody title="Design Settings">
@@ -60,82 +77,6 @@ export default function Edit({ attributes, setAttributes }) {
 			onChange={ ( color ) =>
 				setAttributes( { titleBgColor: color } )
 			}
-		/>
-						
-		<BoxControl
-			label="Padding Top Bottom"
-			values={ paddingTopBottomTitle }
-			sides={['top', 'bottom']}
-			onChange={ ( value ) =>
-				setAttributes({
-					paddingTopBottomTitle: value
-				})
-			}
-			units={[
-				{
-					value: 'px',
-					label: 'px',
-					default: 0
-				},
-				{
-					value: '%',
-					label: '%',
-					default: 0
-				},
-				{
-					value: 'em',
-					label: 'em',
-					default: 0
-				},
-				{
-					value: 'rem',
-					label: 'rem',
-					default: 0
-				}
-			]}
-			allowReset={ true }
-			resetValues={{
-				top: '0px',
-				bottom: '0px',
-			}}
-		/>
-
-		<BoxControl
-			label="Padding Left Right"
-			values={ paddingLeftRightTitle }
-			sides={['left', 'right']}
-			onChange={ ( value ) =>
-				setAttributes({
-					paddingLeftRightTitle: value
-				})
-			}
-			units={[
-				{
-					value: 'px',
-					label: 'px',
-					default: 0
-				},
-				{
-					value: '%',
-					label: '%',
-					default: 0
-				},
-				{
-					value: 'em',
-					label: 'em',
-					default: 0
-				},
-				{
-					value: 'rem',
-					label: 'rem',
-					default: 0
-				}
-			]}
-			allowReset={ true }
-			resetValues={{
-				right: '0px',
-				left: '0px'
-			}}
 		/>
 		
 		<TextControl

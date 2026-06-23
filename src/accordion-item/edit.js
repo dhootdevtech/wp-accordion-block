@@ -36,16 +36,18 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 		title,
 		titleTag,
 		isOpen,
-		paddingLeftRightTitle,
-		paddingTopBottomTitle,
-		paddingContent,
+		marginTopBottom,
+		marginLeftRight, 
 		contentBgcolor,
 		contentColor,
 		titleBgColor,
 		titleColor,
 		fontSize,
 		fontWeight,
-		padding,
+		paddingLeftRightTitle, 
+		paddingTopBottomTitle,
+		paddingTopBottomContent,
+		paddingLeftRightContent,
 		border,
 		borderRadius
 	} = attributes;
@@ -70,6 +72,13 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 	const iconType =
 	parentAttributes.iconType || 'plus';
 
+	const marginStyle = {
+			marginTop:marginTopBottom?.top,
+			marginBottom:marginTopBottom?.bottom,
+			marginLeft:marginLeftRight?.left,
+			marginRight:marginLeftRight?.right
+	};
+
 	const titleStyles = {
 			color: parentAttributes.titleColor,
 			fontSize: parentAttributes.fontSize,
@@ -79,10 +88,10 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 	const titleWithToggle = {
 			backgroundColor:
 				parentAttributes.titleBgColor,
-			paddingTop: parentAttributes.paddingTopBottomTitle?.top,
-			paddingRight: parentAttributes.paddingLeftRightTitle?.right,
-			paddingBottom: parentAttributes.paddingTopBottomTitle?.bottom,
-			paddingLeft: parentAttributes.paddingLeftRightTitle?.left,
+			paddingTop: paddingTopBottomTitle?.top,
+			paddingRight: paddingLeftRightTitle?.right,
+			paddingBottom: paddingTopBottomTitle?.bottom,
+			paddingLeft: paddingLeftRightTitle?.left,
 			border:
 				parentAttributes.border,
 			borderRadius:
@@ -96,18 +105,109 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 
 
 	const contentStyle = {
-		paddingTop: paddingContent?.top,
-		paddingRight: paddingContent?.right,
-		paddingBottom: paddingContent?.bottom,
-		paddingLeft: paddingContent?.left,
+		paddingTop: paddingTopBottomContent?.top,
+		paddingRight: paddingLeftRightContent?.right,
+		paddingBottom: paddingTopBottomContent?.bottom,
+		paddingLeft: paddingLeftRightContent?.left,
 		backgroundColor: contentBgcolor,
 		color: contentColor
 	}
     
-console.log(attributes.paddingContent);
 	return (
 		<>
 		<InspectorControls>
+			<PanelBody title="Accordion Item Margin & Padding">
+				<BoxControl
+					label="Margin Top Bottom"
+					values={ marginTopBottom }
+					sides={['top', 'bottom']}
+					onChange={ ( value ) =>
+						setAttributes({
+							marginTopBottom: value
+						})
+					}
+					units={[
+						{
+							value: 'px',
+							label: 'px',
+							default: 0
+						}
+					]}
+					allowReset={ true }
+					resetValues={{
+						top: '0px',
+						bottom: '0px',
+					}}
+				/>
+
+				<BoxControl
+					label="Margin Left Right"
+					values={ marginLeftRight }
+					sides={['left', 'right']}
+					onChange={ ( value ) =>
+						setAttributes({
+							marginLeftRight: value
+						})
+					}
+					units={[
+						{
+							value: 'px',
+							label: 'px',
+							default: 0
+						}
+					]}
+					allowReset={ true }
+					resetValues={{
+						left: '0px',
+						right: '0px',
+					}}
+				/>
+				<BoxControl
+					label="Padding Top Bottom"
+					values={ paddingTopBottomTitle }
+					sides={['top', 'bottom']}
+					onChange={ ( value ) =>
+						setAttributes({
+							paddingTopBottomTitle: value
+						})
+					}
+					units={[
+						{
+							value: 'px',
+							label: 'px',
+							default: 0
+						}
+					]}
+					allowReset={ true }
+					resetValues={{
+						top: '0px',
+						bottom: '0px',
+					}}
+				/>
+
+				<BoxControl
+					label="Padding Left Right"
+					values={ paddingLeftRightTitle }
+					sides={['left', 'right']}
+					onChange={ ( value ) =>
+						setAttributes({
+							paddingLeftRightTitle: value
+						})
+					}
+					units={[
+						{
+							value: 'px',
+							label: 'px',
+							default: 0
+						}
+					]}
+					allowReset={ true }
+					resetValues={{
+						right: '0px',
+						left: '0px'
+					}}
+				/>
+			</PanelBody>
 			<PanelBody title="Title Settings">
                   <SelectControl
 					label="Title Tag"
@@ -143,24 +243,59 @@ console.log(attributes.paddingContent);
 					/>
 
 				<BoxControl
-					label="Padding"
-					values={ attributes.paddingContent }
-					onChange={(value) => {
-					setAttributes({
-						paddingContent: {
-							top: value.top ? `${parseInt(value.top)}px` : '',
-							right: value.right ? `${parseInt(value.right)}px` : '',
-							bottom: value.bottom ? `${parseInt(value.bottom)}px` : '',
-							left: value.left ? `${parseInt(value.left)}px` : '',
-						},
-					});
-				}}
+					label="Padding Left Right"
+					values={ paddingLeftRightContent }
+					sides={['left', 'right']}
+					onChange={ ( value ) =>
+						setAttributes({
+							paddingLeftRightContent: value
+						})
+					}
+					units={[
+						{
+							value: 'px',
+							label: 'px',
+							default: 0
+						}
+					]}
+					allowReset={ true }
+					resetValues={{
+						left: '0px',
+						right: '0px',
+					}}
 				/>
+
+				<BoxControl
+					label="Padding Top Bottom"
+					values={ paddingTopBottomContent }
+					sides={['top', 'bottom']}
+					onChange={ ( value ) =>
+						setAttributes({
+							paddingTopBottomContent: value
+						})
+					}
+					units={[
+						{
+							value: 'px',
+							label: 'px',
+							default: 0
+						}
+					]}
+					allowReset={ true }
+					resetValues={{
+						top: '0px',
+						bottom: '0px',
+					}}
+				/>
+
               
 			</PanelBody>
 		</InspectorControls>
 		
-		<div { ...useBlockProps() }>
+		<div { ...useBlockProps({
+			style: marginStyle
+		})}
+		>
 			<div className="wp-accordion-item">
 			
 			<div className="wp-accordion-header" style={titleWithToggle}>
@@ -170,6 +305,7 @@ console.log(attributes.paddingContent);
 						className="wp-accordion-title"
 						value={ title }
 						style={ titleStyles }
+						placeholder="Enter accordion title..."
 						onChange={(value) =>
 							setAttributes({ title: value })
 						}

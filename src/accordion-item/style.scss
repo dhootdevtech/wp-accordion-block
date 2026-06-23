@@ -4,13 +4,16 @@
 	transition: max-height 0.3s ease;
 }
 
+.wp-block-wp-accordion-accordion-item {
+	margin-top: var(--accordion-margin-top);
+	margin-bottom: var(--accordion-margin-bottom);
+	margin-left: var(--accordion-margin-left);
+	margin-right: var(--accordion-margin-right);
+}
+
 .wp-accordion-header {
 	background: var(--accordion-bg);
 	color: var(--accordion-color);
-	padding-top: var(--accordion-padding-top);
-padding-right: var(--accordion-padding-right);
-padding-bottom: var(--accordion-padding-bottom);
-padding-left: var(--accordion-padding-left);
 	border: var(--accordion-border);
 	border-radius: var(--accordion-border-radius);
 	min-height: 60px;

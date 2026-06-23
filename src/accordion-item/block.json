@@ -24,18 +24,37 @@
 			"type": "boolean",
 			"default": true
 		},
-		"paddingContent": {
+		"paddingLeftRightTitle": {
 			"type": "object",
 			"default": {
-				"top": "15px",
-				"right": "15px",
-				"bottom": "15px",
-				"left": "15px"
+				"right": "10px",
+				"left": "10px"
+			}
+		},
+		"paddingTopBottomTitle": {
+			"type": "object",
+			"default": {
+				"top": "10px",
+				"bottom": "10px"
+			}
+		},
+		"paddingTopBottomContent": {
+			"type": "object",
+			"default": {
+				"top": "10px",
+				"bottom": "10px"
+			}
+		},
+		"paddingLeftRightContent": {
+			"type": "object",
+			"default": {
+				"left": "10px",
+				"right": "10px"
 			}
 		},
 		"contentBgcolor":{
 			"type": "string",
-			"default": "#fff"
+			"default": "#ebe9e9"
 		},
 		"contentColor":{
 			"type": "string",
@@ -44,6 +63,20 @@
 		"iconType": {
 			"type": "string",
 			"default": "plus"
+		},
+		"marginTopBottom":{
+           "type": "object",
+			"default": {
+				"top": "10px",
+				"bottom": "10px"
+			}
+		},
+		"marginLeftRight":{
+           "type": "object",
+			"default": {
+				"right": "10px",
+				"left": "10px"
+			}
 		}
 		
 	},

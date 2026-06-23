@@ -114,3 +114,79 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 
 });
+
+document.addEventListener(
+	'DOMContentLoaded',
+	() => {
+
+		const faqData = [];
+
+		document
+			.querySelectorAll(
+				'.wp-accordion-item'
+			)
+			.forEach((item) => {
+
+				const question =
+					item.querySelector(
+						'.wp-accordion-title'
+					)?.textContent;
+
+				const answer =
+					item.querySelector(
+						'.wp-accordion-content-inner'
+					)?.textContent;
+
+				if (
+					question &&
+					answer
+				) {
+
+					faqData.push({
+						'@type':
+							'Question',
+						name:
+							question,
+						acceptedAnswer:
+							{
+								'@type':
+									'Answer',
+								text:
+									answer
+							}
+					});
+
+				}
+
+			});
+
+		if (
+			faqData.length
+		) {
+
+			const script =
+				document.createElement(
+					'script'
+				);
+
+			script.type =
+				'application/ld+json';
+
+			script.text =
+				JSON.stringify({
+					'@context':
+						'https://schema.org',
+					'@type':
+						'FAQPage',
+					mainEntity:
+						faqData
+				});
+
+			document.head.appendChild(
+				script
+			);
+
+		}
+
+	}
+);

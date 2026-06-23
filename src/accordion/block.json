@@ -43,20 +43,11 @@
 			"type": "string",
 			"default": "4px"
 		},
-		"paddingLeftRightTitle": {
-			"type": "object",
-			"default": {
-				"right": "10px",
-				"left": "10px"
-			}
-		},
-		"paddingTopBottomTitle": {
-			"type": "object",
-			"default": {
-				"right": "10px",
-				"left": "10px"
-			}
+		"enableFaqSchema": {
+			"type": "boolean",
+			"default": false
 		}
+		
 	},
 	"supports": {
 		"html": false,

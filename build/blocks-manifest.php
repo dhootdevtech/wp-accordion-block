@@ -46,19 +46,9 @@ return array(
 				'type' => 'string',
 				'default' => '4px'
 			),
-			'paddingLeftRightTitle' => array(
-				'type' => 'object',
-				'default' => array(
-					'right' => '10px',
-					'left' => '10px'
-				)
-			),
-			'paddingTopBottomTitle' => array(
-				'type' => 'object',
-				'default' => array(
-					'right' => '10px',
-					'left' => '10px'
-				)
+			'enableFaqSchema' => array(
+				'type' => 'boolean',
+				'default' => false
 			)
 		),
 		'supports' => array(
@@ -101,18 +91,37 @@ return array(
 				'type' => 'boolean',
 				'default' => true
 			),
-			'paddingContent' => array(
+			'paddingLeftRightTitle' => array(
 				'type' => 'object',
 				'default' => array(
-					'top' => '15px',
-					'right' => '15px',
-					'bottom' => '15px',
-					'left' => '15px'
+					'right' => '10px',
+					'left' => '10px'
+				)
+			),
+			'paddingTopBottomTitle' => array(
+				'type' => 'object',
+				'default' => array(
+					'top' => '10px',
+					'bottom' => '10px'
+				)
+			),
+			'paddingTopBottomContent' => array(
+				'type' => 'object',
+				'default' => array(
+					'top' => '10px',
+					'bottom' => '10px'
+				)
+			),
+			'paddingLeftRightContent' => array(
+				'type' => 'object',
+				'default' => array(
+					'left' => '10px',
+					'right' => '10px'
 				)
 			),
 			'contentBgcolor' => array(
 				'type' => 'string',
-				'default' => '#fff'
+				'default' => '#ebe9e9'
 			),
 			'contentColor' => array(
 				'type' => 'string',
@@ -121,6 +130,20 @@ return array(
 			'iconType' => array(
 				'type' => 'string',
 				'default' => 'plus'
+			),
+			'marginTopBottom' => array(
+				'type' => 'object',
+				'default' => array(
+					'top' => '10px',
+					'bottom' => '10px'
+				)
+			),
+			'marginLeftRight' => array(
+				'type' => 'object',
+				'default' => array(
+					'right' => '10px',
+					'left' => '10px'
+				)
 			)
 		),
 		'supports' => array(
