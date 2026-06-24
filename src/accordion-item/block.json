@@ -77,8 +77,15 @@
 				"right": "10px",
 				"left": "10px"
 			}
-		}
-		
+		},
+		"toggleIconsSize":{
+			"type": "string",
+			"default": "15px"
+		},
+		"toggleIconsWeight":{
+			"type": "string",
+			"default": "200"
+		}	
 	},
 	"supports": {
 		"html": false

@@ -33,15 +33,14 @@ import { PlusIcon, ChevronUpIcon, ChevronDownIcon, MinusIcon } from '../icons';
 export default function Edit({ attributes, setAttributes, clientId }) {
 
 	const {
-		title,
 		titleTag,
+		title,
 		isOpen,
 		marginTopBottom,
 		marginLeftRight, 
 		contentBgcolor,
 		contentColor,
 		titleBgColor,
-		titleColor,
 		fontSize,
 		fontWeight,
 		paddingLeftRightTitle, 
@@ -69,6 +68,8 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 			[clientId]
 	);
 
+	console.log(parentAttributes);
+
 	const iconType =
 	parentAttributes.iconType || 'plus';
 
@@ -80,22 +81,17 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 	};
 
 	const titleStyles = {
-			color: parentAttributes.titleColor,
 			fontSize: parentAttributes.fontSize,
 			fontWeight: parentAttributes.fontWeight
 		};
 
 	const titleWithToggle = {
-			backgroundColor:
-				parentAttributes.titleBgColor,
 			paddingTop: paddingTopBottomTitle?.top,
 			paddingRight: paddingLeftRightTitle?.right,
 			paddingBottom: paddingTopBottomTitle?.bottom,
 			paddingLeft: paddingLeftRightTitle?.left,
-			border:
-				parentAttributes.border,
-			borderRadius:
-				parentAttributes.borderRadius
+			border: parentAttributes.border,
+			borderRadius: parentAttributes.borderRadius
 		};
 
 	const iconMap = {
@@ -209,6 +205,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 				/>
 			</PanelBody>
 			<PanelBody title="Title Settings">
+                  
                   <SelectControl
 					label="Title Tag"
 					value={ titleTag }
@@ -296,7 +293,9 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 			style: marginStyle
 		})}
 		>
-			<div className="wp-accordion-item">
+			<div className={`wp-accordion-item ${
+				isOpen ? 'active' : ''
+			}`}>
 			
 			<div className="wp-accordion-header" style={titleWithToggle}>
 
@@ -304,14 +303,14 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 						tagName={ titleTag }
 						className="wp-accordion-title"
 						value={ title }
-						style={ titleStyles }
+						style={titleStyles }
 						placeholder="Enter accordion title..."
 						onChange={(value) =>
 							setAttributes({ title: value })
 						}
 					/>
 
-					<span className="wp-accordion-icon" onClick={() => setAttributes({ isOpen: !isOpen}) }>
+					<span className="wp-accordion-icon"  onClick={() => setAttributes({ isOpen: !isOpen}) }>
 						{ iconMap[iconType] }
 					</span>
 

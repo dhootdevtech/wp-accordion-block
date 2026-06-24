@@ -23,7 +23,23 @@
       "type": "string",
       "default": "#f7f7f7"
     },
+    "titleBgHoverColor": {
+      "type": "string",
+      "default": "#f7f7f7"
+    },
+    "titleBgActiveColor": {
+      "type": "string",
+      "default": "#f7f7f7"
+    },
     "titleColor": {
+      "type": "string",
+      "default": "#2984D1"
+    },
+    "titleHoverColor": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "titleActiveColor": {
       "type": "string",
       "default": "#000000"
     },

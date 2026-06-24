@@ -26,7 +26,23 @@ return array(
 				'type' => 'string',
 				'default' => '#f7f7f7'
 			),
+			'titleBgHoverColor' => array(
+				'type' => 'string',
+				'default' => '#f7f7f7'
+			),
+			'titleBgActiveColor' => array(
+				'type' => 'string',
+				'default' => '#f7f7f7'
+			),
 			'titleColor' => array(
+				'type' => 'string',
+				'default' => '#2984D1'
+			),
+			'titleHoverColor' => array(
+				'type' => 'string',
+				'default' => '#000000'
+			),
+			'titleActiveColor' => array(
 				'type' => 'string',
 				'default' => '#000000'
 			),
@@ -144,6 +160,14 @@ return array(
 					'right' => '10px',
 					'left' => '10px'
 				)
+			),
+			'toggleIconsSize' => array(
+				'type' => 'string',
+				'default' => '15px'
+			),
+			'toggleIconsWeight' => array(
+				'type' => 'string',
+				'default' => '200'
 			)
 		),
 		'supports' => array(

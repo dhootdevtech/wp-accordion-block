@@ -19,6 +19,7 @@ export default function save( { attributes } ) {
 	const {
 		title,
 		titleTag,
+		titleColor,
 		isOpen,
 		contentBgcolor,
 		contentColor,
@@ -39,6 +40,10 @@ export default function save( { attributes } ) {
 	};
 
 	const HeadingTag = titleTag;
+
+	const titleColorIcons ={
+           color: titleColor,
+	}
 
 	const contentStyle = {
 		paddingTop: paddingTopBottomContent?.top,

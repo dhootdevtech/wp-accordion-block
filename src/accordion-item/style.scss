@@ -19,12 +19,46 @@
 	min-height: 60px;
 	box-sizing: border-box;
 	line-height: normal !important;
+	transition: background-color .3s ease, color .3s ease;
+}
+
+.wp-accordion-header:hover {
+	background-color:
+		var(--accordion-bg-hover);
+	color:
+		var(--accordion-color-hover);
+}
+
+.wp-accordion-item.active
+.wp-accordion-header {
+	background-color:
+		var(--accordion-bg-active);
+
+	color:
+		var(--accordion-color-active);
+}
+
+.wp-accordion-title {
+	color:
+		var(--accordion-color);
 }
 
 .wp-accordion-title {
 	font-size: var(--accordion-font-size);
 	font-weight: var(--accordion-font-weight);
 	
+}
+
+.wp-accordion-item.active
+.wp-accordion-title {
+	color:
+		var(--accordion-color-active);
+}
+
+.wp-accordion-header:hover
+.wp-accordion-title {
+	color:
+		var(--accordion-color-hover);
 }
 
 .icon-minus,.icon-chevron-up {
@@ -45,4 +79,16 @@
 
 .wp-accordion-item.active .icon-minus {
 	display: inline-flex;
+}
+
+.wp-accordion-header:hover
+.wp-accordion-icon {
+	color:
+		var(--accordion-color-hover);
+}
+
+.wp-accordion-item.active
+.wp-accordion-icon {
+	color:
+		var(--accordion-color-active);
 }

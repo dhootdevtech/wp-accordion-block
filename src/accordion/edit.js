@@ -18,13 +18,18 @@ export default function Edit({ attributes, setAttributes }) {
 	const { openFirst, 
 		singleOpen, 
 		iconType, 
-		titleBgColor, 
+		titleBgColor,
+		titleBgHoverColor,
+		titleBgActiveColor, 
 		titleColor, 
+		titleHoverColor,
+		titleActiveColor,
 		fontSize,
 		fontWeight, 
 		enableFaqSchema,
 		border, 
 		borderRadius } = attributes;
+
 	return (
 		<>
 		<InspectorControls>
@@ -71,12 +76,26 @@ export default function Edit({ attributes, setAttributes }) {
 
 		</PanelBody>
 		<PanelBody title="Design Settings">
-        <p>Background Color</p>
+        <p>Accodion Title Bar Background Color</p>
+			<ColorPalette
+				value={ attributes.titleBgColor }
+				onChange={ ( color ) =>
+					setAttributes( { titleBgColor: color } )
+				}
+			/>
+        <p>Title Bar Background hover color</p>
 		<ColorPalette
-			value={ attributes.titleBgColor }
-			onChange={ ( color ) =>
-				setAttributes( { titleBgColor: color } )
-			}
+				value={ attributes.titleBgHoverColor }
+				onChange={ ( color ) =>
+					setAttributes( { titleBgHoverColor: color } )
+				}
+		/>
+        <p>Title Bar Background active color</p>
+		<ColorPalette
+				value={ attributes.titleBgActiveColor }
+				onChange={ ( color ) =>
+					setAttributes( { titleBgActiveColor: color } )
+				}
 		/>
 		
 		<TextControl
@@ -103,6 +122,22 @@ export default function Edit({ attributes, setAttributes }) {
 							setAttributes( { titleColor: color } )
 						}
 					/>
+                    
+					<p>Title Text Hover Color & Icon</p>
+					<ColorPalette
+							value={ attributes.titleHoverColor }
+							onChange={ ( color ) =>
+								setAttributes( { titleHoverColor: color } )
+							}
+					/>
+
+                    <p>Title Text Active Color & Icon</p>
+					<ColorPalette
+							value={ attributes.titleActiveColor }
+							onChange={ ( color ) =>
+								setAttributes( { titleActiveColor: color } )
+							}
+					/>
 
 					<TextControl
 						label="Font Size"
@@ -127,7 +162,16 @@ export default function Edit({ attributes, setAttributes }) {
 					/>
 		</PanelBody>
 	</InspectorControls>
-	<div {...useBlockProps()}>
+	<div {...useBlockProps({
+		style: {
+			'--accordion-bg': titleBgColor,
+			'--accordion-bg-hover': titleBgHoverColor,
+			'--accordion-bg-active': titleBgActiveColor,
+			'--accordion-color': titleColor,
+			'--accordion-color-hover': titleHoverColor,
+			'--accordion-color-active': titleActiveColor,
+		}
+	})}>
 			<InnerBlocks
 
 				allowedBlocks={[

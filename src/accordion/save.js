@@ -7,7 +7,11 @@ export default function save({ attributes}) {
 			singleOpen, 
 			iconType, 
 			titleBgColor, 
+			titleBgHoverColor,
+			titleBgActiveColor, 
 			titleColor, 
+			titleHoverColor,
+			titleActiveColor, 
 			fontSize,
 			fontWeight, 
 			border, 
@@ -18,6 +22,10 @@ export default function save({ attributes}) {
 			})}
 		style={{
 				'--accordion-bg': titleBgColor,
+				'--accordion-bg-hover': titleBgHoverColor,
+				'--accordion-bg-active': titleBgActiveColor,
+				'--accordion-color-hover': titleHoverColor,
+				'--accordion-color-active': titleActiveColor,
 				'--accordion-color': titleColor,
 				'--accordion-font-size': fontSize,
 				'--accordion-font-weight': fontWeight,
