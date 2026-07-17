@@ -18,14 +18,6 @@ export default function Edit({ attributes, setAttributes }) {
 	const { openFirst, 
 		singleOpen, 
 		iconType, 
-		titleBgColor,
-		titleBgHoverColor,
-		titleBgActiveColor, 
-		titleColor, 
-		titleHoverColor,
-		titleActiveColor,
-		fontSize,
-		fontWeight, 
 		enableFaqSchema,
 		border, 
 		borderRadius } = attributes;
@@ -76,27 +68,7 @@ export default function Edit({ attributes, setAttributes }) {
 
 		</PanelBody>
 		<PanelBody title="Design Settings">
-        <p>Accodion Title Bar Background Color</p>
-			<ColorPalette
-				value={ attributes.titleBgColor }
-				onChange={ ( color ) =>
-					setAttributes( { titleBgColor: color } )
-				}
-			/>
-        <p>Title Bar Background hover color</p>
-		<ColorPalette
-				value={ attributes.titleBgHoverColor }
-				onChange={ ( color ) =>
-					setAttributes( { titleBgHoverColor: color } )
-				}
-		/>
-        <p>Title Bar Background active color</p>
-		<ColorPalette
-				value={ attributes.titleBgActiveColor }
-				onChange={ ( color ) =>
-					setAttributes( { titleBgActiveColor: color } )
-				}
-		/>
+       
 		
 		<TextControl
 			label="Border"
@@ -114,64 +86,9 @@ export default function Edit({ attributes, setAttributes }) {
 			}
 		/>
 		</PanelBody>
-		<PanelBody title="Typography Title Settings">
-                    <p>Text Color</p>
-					<ColorPalette
-						value={ attributes.titleColor }
-						onChange={ ( color ) =>
-							setAttributes( { titleColor: color } )
-						}
-					/>
-                    
-					<p>Title Text Hover Color & Icon</p>
-					<ColorPalette
-							value={ attributes.titleHoverColor }
-							onChange={ ( color ) =>
-								setAttributes( { titleHoverColor: color } )
-							}
-					/>
 
-                    <p>Title Text Active Color & Icon</p>
-					<ColorPalette
-							value={ attributes.titleActiveColor }
-							onChange={ ( color ) =>
-								setAttributes( { titleActiveColor: color } )
-							}
-					/>
-
-					<TextControl
-						label="Font Size"
-						value={ attributes.fontSize }
-						onChange={ ( value ) =>
-							setAttributes( { fontSize: value } )
-						}
-					/>
-
-					<SelectControl
-						label="Font Weight"
-						value={ attributes.fontWeight }
-						options={ [
-							{ label: 'Normal', value: '400' },
-							{ label: 'Medium', value: '500' },
-							{ label: 'Semi Bold', value: '600' },
-							{ label: 'Bold', value: '700' }
-						] }
-						onChange={ ( value ) =>
-							setAttributes( { fontWeight: value } )
-						}
-					/>
-		</PanelBody>
 	</InspectorControls>
-	<div {...useBlockProps({
-		style: {
-			'--accordion-bg': titleBgColor,
-			'--accordion-bg-hover': titleBgHoverColor,
-			'--accordion-bg-active': titleBgActiveColor,
-			'--accordion-color': titleColor,
-			'--accordion-color-hover': titleHoverColor,
-			'--accordion-color-active': titleActiveColor,
-		}
-	})}>
+	<div {...useBlockProps()}>
 			<InnerBlocks
 
 				allowedBlocks={[

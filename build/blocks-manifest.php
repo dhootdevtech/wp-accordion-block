@@ -22,38 +22,6 @@ return array(
 				'type' => 'string',
 				'default' => 'plus'
 			),
-			'titleBgColor' => array(
-				'type' => 'string',
-				'default' => '#f7f7f7'
-			),
-			'titleBgHoverColor' => array(
-				'type' => 'string',
-				'default' => '#f7f7f7'
-			),
-			'titleBgActiveColor' => array(
-				'type' => 'string',
-				'default' => '#f7f7f7'
-			),
-			'titleColor' => array(
-				'type' => 'string',
-				'default' => '#2984D1'
-			),
-			'titleHoverColor' => array(
-				'type' => 'string',
-				'default' => '#000000'
-			),
-			'titleActiveColor' => array(
-				'type' => 'string',
-				'default' => '#000000'
-			),
-			'fontSize' => array(
-				'type' => 'string',
-				'default' => '18px'
-			),
-			'fontWeight' => array(
-				'type' => 'string',
-				'default' => '600'
-			),
 			'border' => array(
 				'type' => 'string',
 				'default' => '1px solid #ddd'
@@ -102,6 +70,54 @@ return array(
 			'titleTag' => array(
 				'type' => 'string',
 				'default' => 'h3'
+			),
+			'titleBgColor' => array(
+				'type' => 'string',
+				'default' => '#f7f7f7'
+			),
+			'titleBgHoverColor' => array(
+				'type' => 'string',
+				'default' => '#f7f7f7'
+			),
+			'titleBgActiveColor' => array(
+				'type' => 'string',
+				'default' => '#f7f7f7'
+			),
+			'titleColor' => array(
+				'type' => 'string',
+				'default' => '#2984D1'
+			),
+			'titleHoverColor' => array(
+				'type' => 'string',
+				'default' => '#000000'
+			),
+			'titleActiveColor' => array(
+				'type' => 'string',
+				'default' => '#000000'
+			),
+			'fontTitleSize' => array(
+				'type' => 'string',
+				'default' => '18px'
+			),
+			'fontTitleWeight' => array(
+				'type' => 'string',
+				'default' => '600'
+			),
+			'iconColor' => array(
+				'type' => 'string',
+				'default' => '#000'
+			),
+			'iconHoverColor' => array(
+				'type' => 'string',
+				'default' => '#000'
+			),
+			'iconActiveColor' => array(
+				'type' => 'string',
+				'default' => '#000'
+			),
+			'iconFontSize' => array(
+				'type' => 'string',
+				'default' => '12px'
 			),
 			'isOpen' => array(
 				'type' => 'boolean',

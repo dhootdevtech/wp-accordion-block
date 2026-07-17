@@ -14,52 +14,17 @@
 .wp-accordion-header {
 	background: var(--accordion-bg);
 	color: var(--accordion-color);
-	border: var(--accordion-border);
-	border-radius: var(--accordion-border-radius);
 	min-height: 60px;
 	box-sizing: border-box;
 	line-height: normal !important;
 	transition: background-color .3s ease, color .3s ease;
 }
 
-.wp-accordion-header:hover {
-	background-color:
-		var(--accordion-bg-hover);
-	color:
-		var(--accordion-color-hover);
+.wp-accordion-item{
+    border: var(--accordion-border);
+	border-radius: var(--accordion-border-radius);
 }
 
-.wp-accordion-item.active
-.wp-accordion-header {
-	background-color:
-		var(--accordion-bg-active);
-
-	color:
-		var(--accordion-color-active);
-}
-
-.wp-accordion-title {
-	color:
-		var(--accordion-color);
-}
-
-.wp-accordion-title {
-	font-size: var(--accordion-font-size);
-	font-weight: var(--accordion-font-weight);
-	
-}
-
-.wp-accordion-item.active
-.wp-accordion-title {
-	color:
-		var(--accordion-color-active);
-}
-
-.wp-accordion-header:hover
-.wp-accordion-title {
-	color:
-		var(--accordion-color-hover);
-}
 
 .icon-minus,.icon-chevron-up {
 	display: none;
@@ -91,4 +56,43 @@
 .wp-accordion-icon {
 	color:
 		var(--accordion-color-active);
+}
+
+/*new css title*/
+
+.wp-accordion-title {
+	display: block;
+	box-sizing: border-box;
+	flex: 1;
+	margin: 0;
+	color: var(--accordion-title-color);
+    font-size: var(--accordion-title-size);
+    font-weight: var(--accordion-title-weight);
+}
+
+.wp-accordion-title:hover {
+	color:
+		var(--accordion-title-text-hover-color);
+}
+
+.wp-accordion-item.active .wp-accordion-title {
+	color: var(--accordion-title-text-active-color);
+}
+
+.wp-accordion-header .icons_wrap .icon-color svg {
+    width: var(--accordion-icon-size);
+   height: var(--accordion-icon-size);
+}
+
+.wp-accordion-header .icons_wrap .icon-color svg path {
+   stroke: var(--accordion-icon-color);
+  
+}
+
+.wp-accordion-header .icons_wrap .icon-color svg path:hover {
+   stroke: var(--accordion-icon-hover-color);
+}
+
+.wp-accordion-item.active .wp-accordion-header .icons_wrap .icon-color svg path {
+   stroke: var(--accordion-icon-active-color);
 }

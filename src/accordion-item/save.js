@@ -17,18 +17,31 @@ import { PlusIcon, ChevronUpIcon, ChevronDownIcon, MinusIcon } from '../icons';
  */
 export default function save( { attributes } ) {
 	const {
-		title,
 		titleTag,
-		titleColor,
+		title,
 		isOpen,
+		marginTopBottom,
+		marginLeftRight, 
 		contentBgcolor,
 		contentColor,
-		marginTopBottom,
-		marginLeftRight,
+		titleBgColor,
+		titleBgHoverColor,
+		titleBgActiveColor, 
+		titleColor, 
+		titleHoverColor,
+		titleActiveColor,
+		fontTitleSize,
+		fontTitleWeight, 
+        iconColor, 
+		iconHoverColor, 
+		iconActiveColor,
+		iconFontSize,
 		paddingLeftRightTitle, 
 		paddingTopBottomTitle,
 		paddingTopBottomContent,
 		paddingLeftRightContent,
+		border,
+		borderRadius,
 		iconType
 	} = attributes;
 
@@ -79,7 +92,19 @@ export default function save( { attributes } ) {
 		<div { ...useBlockProps.save({
 			style:marginStyle
 		}) } >
-			<div className="wp-accordion-item">
+			<div className="wp-accordion-item"
+			style={{
+				'--accordion-title-color': titleColor,
+				'--accordion-title-size': fontTitleSize,
+				'--accordion-title-weight': fontTitleWeight,
+				'--accordion-title-text-hover-color': titleHoverColor,				
+				'--accordion-title-text-active-color': titleActiveColor,
+				'--accordion-icon-color': iconColor,
+				'--accordion-icon-size': iconFontSize,
+				'--accordion-icon-hover-color': iconHoverColor,
+				'--accordion-icon-active-color': iconActiveColor,
+			}}
+			>
 
 				<div className="wp-accordion-header" style={titleWithToggle}>
 
@@ -96,25 +121,29 @@ export default function save( { attributes } ) {
 
 					{iconType === 'plus' && (
 						<>
-							<span className="icon-plus">
+						<div class="icons_wrap">
+							<span className="icon-plus icon-color">
 								<PlusIcon />
 							</span>
 
-							<span className="icon-minus">
+							<span className="icon-minus icon-color">
 								<MinusIcon />
 							</span>
+						</div>
 						</>
 					)}
 
 					{iconType === 'chevron' && (
 						<>
-							<span className="icon-chevron-down">
+						<div class="icons_wrap">
+							<span className="icon-chevron-down icon-color">
 								<ChevronDownIcon />
 							</span>
 
-							<span className="icon-chevron-up">
+							<span className="icon-chevron-up icon-color">
 								<ChevronUpIcon />
 							</span>
+						</div>
 						</>
 					)}
 

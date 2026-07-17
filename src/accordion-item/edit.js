@@ -41,8 +41,17 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 		contentBgcolor,
 		contentColor,
 		titleBgColor,
-		fontSize,
-		fontWeight,
+		titleBgHoverColor,
+		titleBgActiveColor, 
+		titleColor, 
+		titleHoverColor,
+		titleActiveColor,
+		fontTitleSize,
+		fontTitleWeight, 
+        iconColor, 
+		iconHoverColor, 
+		iconActiveColor,
+		iconFontSize,
 		paddingLeftRightTitle, 
 		paddingTopBottomTitle,
 		paddingTopBottomContent,
@@ -81,8 +90,9 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 	};
 
 	const titleStyles = {
-			fontSize: parentAttributes.fontSize,
-			fontWeight: parentAttributes.fontWeight
+			 '--accordion-title-color': titleColor,
+			 '--accordion-title-font-size': fontTitleSize,
+			 '--accordion-title-font-weight': fontTitleWeight,
 		};
 
 	const titleWithToggle = {
@@ -223,15 +233,144 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 						} )
 					}
 				/>
+
+				 <p>Accodion Title Bar Background Color</p>
+				<ColorPalette
+						value={ attributes.titleBgColor }
+						onChange={ ( color ) =>
+							setAttributes( { titleBgColor: color } )
+						}
+					/>
+				<p>Title Bar Background hover color</p>
+				<ColorPalette
+						value={ titleBgHoverColor }
+						onChange={ ( color ) =>
+							setAttributes( { titleBgHoverColor: color } )
+						}
+				/>
+				<p>Title Bar Background active color</p>
+				<ColorPalette
+						value={ titleBgActiveColor }
+						onChange={ ( color ) =>
+							setAttributes( { titleBgActiveColor: color } )
+						}
+				/>
+
+				<p>Text Color</p>
+					<ColorPalette
+						value={ titleColor }
+						onChange={ ( color ) =>
+							setAttributes( { titleColor: color } )
+						}
+					/>
+                    
+					<p>Title Text Hover Color & Icon</p>
+					<ColorPalette
+							value={ titleHoverColor }
+							onChange={ ( color ) =>
+								setAttributes( { titleHoverColor: color } )
+							}
+					/>
+
+                    <p>Title Text Active Color & Icon</p>
+					<ColorPalette
+							value={ titleActiveColor }
+							onChange={ ( color ) =>
+								setAttributes( { titleActiveColor: color } )
+							}
+					/>
+
+					<SelectControl
+						label="Font Size"
+						value={ fontTitleSize }
+						options={ [
+							{ label: '14px', value: '14px' },
+							{ label: '15px', value: '15px' },
+							{ label: '16px', value: '16px' },
+							{ label: '17px', value: '17px' },
+							{ label: '18px', value: '18px' },
+							{ label: '19px', value: '19px' },
+							{ label: '20px', value: '20px' },
+							{ label: '21px', value: '21px' },
+							{ label: '22px', value: '22px' },
+							{ label: '23px', value: '23px' },
+							{ label: '24px', value: '24px' }
+						] }
+						onChange={ ( value ) =>
+							setAttributes( { fontTitleSize: value } )
+						}
+					/>
+
+					<SelectControl
+						label="Font Weight"
+						value={ fontTitleWeight }
+						options={ [
+							{ label: 'Normal', value: '400' },
+							{ label: 'Medium', value: '500' },
+							{ label: 'Semi Bold', value: '600' },
+							{ label: 'Bold', value: '700' }
+						] }
+						onChange={ ( value ) =>
+							setAttributes( { fontTitleWeight: value } )
+						}
+					/>
+			</PanelBody>
+			<PanelBody title="Icon Settings">
+                <SelectControl
+						label="Icon Font Size"
+						value={ iconFontSize }
+						options={ [
+							{ label: '14px', value: '14px' },
+							{ label: '15px', value: '15px' },
+							{ label: '16px', value: '16px' },
+							{ label: '17px', value: '17px' },
+							{ label: '18px', value: '18px' },
+							{ label: '19px', value: '19px' },
+							{ label: '20px', value: '20px' },
+							{ label: '21px', value: '21px' },
+							{ label: '22px', value: '22px' },
+							{ label: '23px', value: '23px' },
+							{ label: '24px', value: '24px' }
+						] }
+						onChange={ ( value ) =>
+							setAttributes( { iconFontSize: value } )
+						}
+					/>
+
+               <p>Icon Color</p>
+                <ColorPalette
+						value={ iconColor }
+						onChange={ ( color ) =>
+							setAttributes( { iconColor: color } )
+						}
+				/>
+
+				<p>Icon Hover Color</p>
+                <ColorPalette
+						value={ iconHoverColor }
+						onChange={ ( color ) =>
+							setAttributes( { iconHoverColor: color } )
+						}
+				/>
+
+				<p>Icon Active Color</p>
+                <ColorPalette
+						value={ iconActiveColor }
+						onChange={ ( color ) =>
+							setAttributes( { iconActiveColor: color } )
+						}
+				/>
 			</PanelBody>
 			<PanelBody title="Content Settings">
+				<p>Content background Color</p>
                 <ColorPalette
-						value={ attributes.contentBgcolor }
+						value={ contentBgcolor }
 						onChange={ ( color ) =>
 							setAttributes( { contentBgcolor: color } )
 						}
 				/>
 
+                <p>Content Color</p>
 				<ColorPalette
 						value={ attributes.contentColor }
 						onChange={ ( color ) =>
@@ -295,7 +434,19 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 		>
 			<div className={`wp-accordion-item ${
 				isOpen ? 'active' : ''
-			}`}>
+			}`}
+			style={{
+				'--accordion-title-color': titleColor,
+				'--accordion-title-size': fontTitleSize,
+				'--accordion-title-weight': fontTitleWeight,
+				'--accordion-title-text-hover-color': titleHoverColor,				
+				'--accordion-title-text-active-color': titleActiveColor,
+				'--accordion-icon-color': iconColor,
+				'--accordion-icon-size': iconFontSize,
+				'--accordion-icon-hover-color': iconHoverColor,
+				'--accordion-icon-active-color': iconActiveColor,
+			}}
+			>
 			
 			<div className="wp-accordion-header" style={titleWithToggle}>
 
@@ -303,17 +454,17 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 						tagName={ titleTag }
 						className="wp-accordion-title"
 						value={ title }
-						style={titleStyles }
 						placeholder="Enter accordion title..."
 						onChange={(value) =>
 							setAttributes({ title: value })
 						}
 					/>
-
-					<span className="wp-accordion-icon"  onClick={() => setAttributes({ isOpen: !isOpen}) }>
-						{ iconMap[iconType] }
-					</span>
-
+                   
+				   <div class="icons_wrap">
+						<span className="wp-accordion-icon icon-color"  onClick={() => setAttributes({ isOpen: !isOpen}) }>
+							{ iconMap[iconType] }
+						</span>
+                    </div>
 				</div>
 				
 				{ isOpen && (
